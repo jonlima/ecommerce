@@ -1,9 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { EnvConfigService } from './shared/infra/env-config/env-config.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const envConfigService = app.get<EnvConfigService>(EnvConfigService);
+  const port = envConfigService.get('port');
 
   // adicionar bearer auth
   const configSwagger = new DocumentBuilder()
@@ -17,6 +20,6 @@ async function bootstrap() {
     jsonDocumentUrl: 'doc/json',
   });
 
-  await app.listen(3000);
+  await app.listen(port);
 }
 bootstrap();
