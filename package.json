@@ -24,7 +24,9 @@
     "migration:revert": "npm run typeorm -- -d ./database/typeorm/typeorm.datasource.ts migration:revert",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "commitlint": "./node_modules/.bin/commitlint --edit $1"
+    "commitlint": "./node_modules/.bin/commitlint --edit $1",
+    "typeorm-extension": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/bin/cli.cjs",
+    "seed:create": "npm run typeorm-extension -- seed:create --name ./database/typeorm/seeds/$npm_config_name"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -87,7 +89,7 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "*.ts": [
+    "src/**/*.ts": [
       "npm run lint",
       "npm run format"
     ]
