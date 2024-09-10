@@ -20,7 +20,7 @@ Faça uma copia de `env.example` e renomei para `.env`
 
 1. Clone:
    ```bash
-   git clone https://github.com/jonlima/url-shortener.git
+   git clone https://github.com/jonlima/ecommerce.git
    ```
 2. Instalar dependência:
    ```bash
