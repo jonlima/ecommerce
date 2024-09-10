@@ -22,9 +22,9 @@
     "migration:create": "npm run typeorm migration:create ./database/typeorm/migrations/$npm_config_name",
     "migration:run": "npm run typeorm migration:run -- -d ./database/typeorm/typeorm.datasource.ts",
     "migration:revert": "npm run typeorm -- -d ./database/typeorm/typeorm.datasource.ts migration:revert",
-    "prepare": "npx simple-git-hooks",
+    "prepare": "husky",
     "lint-staged": "lint-staged",
-    "commitlint": "commitlint"
+    "commitlint": "./node_modules/.bin/commitlint --edit $1"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -85,10 +85,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npm run lint-staged",
-    "commit-msg": "./node_modules/.bin/commitlint --edit $1"
   },
   "lint-staged": {
     "*.ts": [
