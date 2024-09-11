@@ -7,7 +7,7 @@ import { EnvConfigService } from 'src/shared/infra/env-config/env-config.service
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      imports: [EnvConfigModule],
+      imports: [EnvConfigModule.forRoot()],
       inject: [EnvConfigService],
       useFactory: async (config: EnvConfigService) => {
         return {

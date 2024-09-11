@@ -13,6 +13,10 @@ export const factory = (): EnvConfig => {
       url: process.env.DATABASE_URL,
       username: process.env.DATABASE_USERNAME,
     },
+    jwt: {
+      secret: process.env.JWT_SECRET,
+      expiresIn: process.env.JWT_EXPIRES_IN,
+    },
   });
 
   if (result.success) {
