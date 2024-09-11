@@ -12,6 +12,10 @@ import { RoleEnum } from '../../../shared/core/enums/role.enum';
 import { ApiProperty } from '@nestjs/swagger';
 import { CreateUserDto } from '../dto/create-user.dto';
 
+import * as bcrypt from 'bcrypt';
+
+const NUMBER_OF_ROUNDS = 10;
+
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -85,10 +89,16 @@ export class User {
   deleted_at?: Date;
 
   constructor(props: CreateUserDto) {
+    const encryptPassword = this.encryptPassword(props?.password);
+
     if (!props?.role) {
       this.role = RoleEnum.CUSTOMER;
     }
 
-    Object.assign(this, props);
+    Object.assign(this, props, { password: encryptPassword });
+  }
+
+  encryptPassword(passwordPlain: string = '') {
+    return bcrypt.hashSync(passwordPlain, NUMBER_OF_ROUNDS);
   }
 }
