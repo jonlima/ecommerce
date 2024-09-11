@@ -8,4 +8,15 @@ Content-Type: application/json
 }
 
 
+### Register User
+POST http://localhost:3000/user/register
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYmE5YmRiYy1jOTVmLTQ4ZDgtODIzNC0xNjQwMGNkODFiNTYiLCJyb2xlIjoiQURNSU4iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3MjYwODg1ODEsImV4cCI6MTcyNjA5MjE4MX0.YxpFg6DcpPTLIUlC8CbnA6E6Y66PbMoe4czOaSa6PvI
+
+{
+  "name": "Jonatha",
+  "email": "jonatha@test.com",
+  "password": "loomi2024",
+  "roles": "ADMIN"
+}
 

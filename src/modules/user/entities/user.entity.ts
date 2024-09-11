@@ -10,6 +10,7 @@ import {
 import { RoleEnum } from '../../../shared/core/enums/role.enum';
 
 import { ApiProperty } from '@nestjs/swagger';
+import { CreateUserDto } from '../dto/create-user.dto';
 
 @Entity('users')
 export class User {
@@ -21,7 +22,7 @@ export class User {
   id: string;
 
   @Column()
-  @ApiProperty({ description: 'Full name of the user', example: 'John Doe' })
+  @ApiProperty({ description: 'Name of the user', example: 'John Doe' })
   name: string;
 
   @Column({ unique: true })
@@ -82,4 +83,12 @@ export class User {
     example: '2024-02-01T10:00:00Z',
   })
   deleted_at?: Date;
+
+  constructor(props: CreateUserDto) {
+    if (!props?.role) {
+      this.role = RoleEnum.CUSTOMER;
+    }
+
+    Object.assign(this, props);
+  }
 }
