@@ -22,5 +22,6 @@ import { EnvConfigModule } from '@shared/infra/env-config/env-config.module';
   ],
   controllers: [AuthController],
   providers: [AuthService],
+  exports: [JwtModule],
 })
 export class AuthModule {}
