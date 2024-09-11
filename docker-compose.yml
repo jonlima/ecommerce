@@ -14,3 +14,4 @@ services:
       - '${DATABASE_PORT}:5432'
     volumes:
       - ./data/db:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d/

@@ -18,6 +18,7 @@ export class CreateUsersTable1725990695013 implements MigrationInterface {
           { name: 'password', type: 'varchar' },
           { name: 'role', type: 'enum', enum: ['ADMIN', 'CUSTOMER'] },
           { name: 'enabled', type: 'boolean', default: true },
+          { name: 'email_confirmed_at', type: 'timestamp', isNullable: true },
           {
             name: 'created_at',
             type: 'timestamp',

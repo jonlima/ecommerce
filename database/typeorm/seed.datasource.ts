@@ -1,13 +1,12 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { SeederOptions } from 'typeorm-extension';
 import { dataSourceOptions } from './typeorm.datasource';
+import { User1725995924835 } from './seeds/1725995924835-user';
 
 const options: DataSourceOptions & SeederOptions = {
   ...dataSourceOptions,
-  seeds: [__dirname + '/seeds/*{.ts,.js}'],
+  seeds: [User1725995924835],
   seedTracking: true,
 };
 
-const dataSource = new DataSource(options);
-
-export default dataSource;
+export const dataSource = new DataSource(options);
