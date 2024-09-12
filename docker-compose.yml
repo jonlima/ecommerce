@@ -15,3 +15,10 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
       - ./init-db:/docker-entrypoint-initdb.d/
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - '1025:1025'
+      - '8025:8025' # GUI web

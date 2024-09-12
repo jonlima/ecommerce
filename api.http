@@ -1,5 +1,8 @@
+### Variables
+@apiurl = http://localhost:3000
+
 ### Login 
-POST http://localhost:3000/auth/login
+POST {{apiurl}}/auth/login
 Content-Type: application/json
 
 {
@@ -9,14 +12,16 @@ Content-Type: application/json
 
 
 ### Register User
-POST http://localhost:3000/user/register
+POST {{apiurl}}/user/register
 Content-Type: application/json
-Authorization: Bearer <token>
+Authorization: Bearer token
 
 {
   "name": "Jonatha",
-  "email": "jonatha@test.com",
+  "email": "jonatha1@test.com",
   "password": "loomi2024",
-  "role": "ADMIN"
+  "role": "CUSTOMER"
 }
 
+### Confirm Email
+GET {{apiurl}}/user/confirm/<id>

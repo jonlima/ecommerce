@@ -16,9 +16,19 @@ export const jwtSchema = z.object({
   expiresIn: z.string(),
 });
 
+export const mailSchema = z.object({
+  mailHost: z.string(),
+  mailPort: z.coerce.number(),
+  mailUser: z.string(),
+  mailPass: z.string(),
+  mailFrom: z.string(),
+});
+
 export const envConfigSchema = z.object({
   env: envSchema,
   port: z.coerce.number().positive().int(),
+  host: z.string(),
   database: databaseSchema,
   jwt: jwtSchema,
+  mail: mailSchema,
 });
