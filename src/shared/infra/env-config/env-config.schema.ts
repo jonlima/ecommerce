@@ -11,8 +11,24 @@ export const databaseSchema = z.object({
   username: z.string(),
 });
 
+export const jwtSchema = z.object({
+  secret: z.string().trim().min(5),
+  expiresIn: z.string(),
+});
+
+export const mailSchema = z.object({
+  mailHost: z.string(),
+  mailPort: z.coerce.number(),
+  mailUser: z.string(),
+  mailPass: z.string(),
+  mailFrom: z.string(),
+});
+
 export const envConfigSchema = z.object({
   env: envSchema,
   port: z.coerce.number().positive().int(),
+  host: z.string(),
   database: databaseSchema,
+  jwt: jwtSchema,
+  mail: mailSchema,
 });

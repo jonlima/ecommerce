@@ -1,0 +1,27 @@
+### Variables
+@apiurl = http://localhost:3000
+
+### Login 
+POST {{apiurl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@test.com",
+  "password": "loomi2024"
+}
+
+
+### Register User
+POST {{apiurl}}/user/register
+Content-Type: application/json
+Authorization: Bearer tokne
+
+{
+  "name": "Jonatha",
+  "email": "jonatha@test.com",
+  "password": "loomi2024",
+  "role": "CUSTOMER"
+}
+
+### Confirm Email
+GET {{apiurl}}/user/confirm/<id>

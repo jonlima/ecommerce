@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from 'src/modules/user/entities/user.entity';
 import { EnvConfigModule } from 'src/shared/infra/env-config/env-config.module';
 import { EnvConfigService } from 'src/shared/infra/env-config/env-config.service';
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      imports: [EnvConfigModule],
+      imports: [EnvConfigModule.forRoot()],
       inject: [EnvConfigService],
       useFactory: async (config: EnvConfigService) => {
         return {
@@ -16,7 +17,7 @@ import { EnvConfigService } from 'src/shared/infra/env-config/env-config.service
           synchronize: false,
           migrationsTableName: 'typeorm_migrations',
           ...config.get('database'),
-          entities: [],
+          entities: [User],
         };
       },
     }),
